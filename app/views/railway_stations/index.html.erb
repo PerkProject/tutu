@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Railway Stations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @railway_stations.each do |railway_station| %>
+      <tr>
+        <td><%= railway_station.title %></td>
+        <td><%= link_to 'Show', railway_station %></td>
+        <td><%= link_to 'Edit', edit_railway_station_path(railway_station) %></td>
+        <td><%= link_to 'Destroy', railway_station, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Railway station', new_railway_station_path %>
+
+<br>
+<%= link_to 'Back', 'welcome/index' %>
