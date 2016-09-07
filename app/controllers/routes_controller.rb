@@ -4,13 +4,17 @@ class RoutesController < ApplicationController
   def index
     @routes = Route.all
   end
+
   def show
   end
+
   def new
     @route = Route.new
   end
+
   def edit
   end
+
   def create
     @route = Route.new(route_params)
     if @route.save
@@ -19,6 +23,7 @@ class RoutesController < ApplicationController
       render :new
     end
   end
+
   def update
     if @route.update(route_params)
       redirect_to @route
@@ -26,6 +31,7 @@ class RoutesController < ApplicationController
       render :edit
     end
   end
+
   def destroy
     @route.destroy
     redirect_to routes_path
