@@ -49,3 +49,9 @@ certs/
 dump.rdb
 config/*.sphinx.conf
 db/sphinx
+test/fixtures/railway_stations_routes.yml
+test/fixtures/tickets.yml
+test/fixtures/users.yml
+test/models/railway_stations_route_test.rb
+test/models/ticket_test.rb
+test/models/user_test.rb
