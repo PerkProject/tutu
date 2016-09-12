@@ -15,7 +15,15 @@
     <%= f.label :number %><br>
     <%= f.text_field :number %>
   </div>
+  <div class="field">
+    <%= f.label :current_station %>
+    <%= f.collection_select :current_station_id, RailwayStation.all, :id, :title %>
+  </div>
+  <div class="field">
+    <%= f.label :route %>
+    <%= f.collection_select :route_id, Route.all, :id, :name %>
+  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "#{ @train.new_record? ? 'Создать' : 'Изменить' }" %>
   </div>
 <% end %>

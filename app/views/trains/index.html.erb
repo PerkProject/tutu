@@ -1,31 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Trains</h1>
+<h1>Список поездов</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Number</th>
+      <th>Номер</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @trains.each do |train| %>
-      <tr>
-        <td><%= train.number %></td>
-        <td><%= link_to 'Show', train %></td>
-        <td><%= link_to 'Edit', edit_train_path(train) %></td>
-        <td><%= link_to 'Destroy', train, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <%= render @trains %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Train', new_train_path %>
+<%= link_to 'Создать новый поезд', new_train_path %>
 
 
 <br>
-<%= link_to 'Back', 'welcome/index' %>
+<%= link_to 'Назад', 'welcome/index' %>
