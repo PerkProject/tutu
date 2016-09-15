@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Список вагонов</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Номер</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <%= render @carriages %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Создать новый вагон', new_carriage_path %>
+
+
+<br>
+<%= link_to 'Назад', 'welcome/index' %>

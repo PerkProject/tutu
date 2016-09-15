@@ -22,5 +22,27 @@
   <%end%>
 </p>
 
+<p>
+  <strong>Информация о вагонах в составе поезда:</strong>
+  <% if @train.carriage.present? %>
+<ul>
+  <% @train.carriage.group(:carriage_type).count.each do |carriage_type, cnt| %>
+    <li><%= "Тип вагона : #{carriage_type} "%>
+      <br>
+        <%= "Количество : #{cnt} " %>
+      <br>
+        <%= "Количество верхних мест : #{@train.carriage.where(carriage_type: carriage_type).sum(:top_place)}"%>
+      <br>
+        <%= "Количество нижних мест : #{@train.carriage.where(carriage_type: carriage_type).sum(:lower_place)}"%>
+    </li>
+  <% end %>
+</ul>
+<% else %>
+    <p>
+      <strong>Вагонов нет </strong>
+    </p>
+<% end %>
+</p>
+
 <%= link_to 'Редактировать', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>
