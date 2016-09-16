@@ -4,10 +4,10 @@ AllCops:
     - config.ru
   Exclude:
     - db/schema.rb
-    - 'vendor/**/*'
-    - 'db/*'
-    - 'tmp/**/*'
-    - 'bin/**/*'
+    - vendor/**/*
+    - db/*
+    - tmp/**/*
+    - bin/**/*
 
 
     AllCops:
