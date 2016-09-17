@@ -1,0 +1,28 @@
+<%= form_for(@carriage) do |f| %>
+<%= render 'common/errors', resource: @carriage %>
+
+    <div class="field">
+      <%= f.label :number %><br>
+      <%= f.text_field :number %>
+    </div>
+    <div class="field">
+      <%= f.label :carriage_type %>
+      <%= f.collection_select :carriage_type, Carriage::CARRIAGE_TYPES, :to_s, :to_s, include_blank: false %>
+    </div>
+    <div class="field">
+      <%= f.label :top_place %>
+      <%= f.select :top_place, options_for_select(0..30, 5)%>
+    </div>
+    <div class="field">
+      <%= f.label :lower_place %>
+      <%= f.select :lower_place, options_for_select(0..30, 5)%>
+    </div>
+    <div class="field">
+      <%= f.label :train %>
+      <%= f.collection_select :train_id, Train.all, :id, :number %>
+    </div>
+    <div class="actions">
+      <%= f.submit "#{ @carriage.new_record? ? 'Создать' : 'Изменить' }" %>
+    </div>
+
+<% end %>
