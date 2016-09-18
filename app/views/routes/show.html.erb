@@ -9,7 +9,7 @@
   <strong>Список станций на маршруте:</strong>
   <% if @route.railway_stations.present? %>
     <ul>
-      <% @route.railway_stations.each do |station| %>
+      <% @route.railway_stations.ordered.each do |station| %>
           <li>
             <%= link_to station.title, station %>
           </li>
