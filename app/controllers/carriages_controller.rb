@@ -56,7 +56,7 @@ class CarriagesController < ApplicationController
   end
 
   def set_carriage
-    @carriage = Carriage.find(params[:id])
+    @carriage = type_class.find(params[:id])
   end
 
   def type_class
@@ -64,6 +64,6 @@ class CarriagesController < ApplicationController
   end
 
   def carriage_params
-    params.require(:carriage).permit(:number, :type, :top_place, :lower_place,  :train_id)
+    params.require(type.underscore.to_sym).permit(:number, :type, :top_place, :lower_place,  :train_id)
   end
 end
