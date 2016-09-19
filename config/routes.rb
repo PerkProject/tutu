@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   resources :railway_stations
   resources :routes
   resources :carriages
+  resources :carriages, controller: 'carriages', type: 'Coupe'
+  resources :carriages, controller: 'carriages', type: 'Economy'
+  resources :carriages, controller: 'carriages', type: 'Sv'
+  resources :carriages, controller: 'carriages', type: 'Sedentary'
   #resources :tickets
   get 'welcome/index'
   root 'welcome#index'

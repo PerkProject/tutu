@@ -1,22 +1,23 @@
 class CarriagesController < ApplicationController
+  before_action :set_type
   before_action :set_carriage, only: [:show, :edit, :update, :destroy]
 
   def index
-    @carriages = Carriage.all
+    @carriages = type_class.all
   end
 
   def show
   end
 
   def new
-    @carriage = Carriage.new
+    @carriage = type_class.new
   end
 
   def edit
   end
 
   def create
-    @carriage = Carriage.new(carriage_params)
+    @carriage = type_class.new(carriage_params)
 
     respond_to do |format|
       if @carriage.save
@@ -45,11 +46,24 @@ class CarriagesController < ApplicationController
   end
 
   private
+
+  def set_type
+    @type = type
+  end
+
+  def type
+    Carriage.types.include?(params[:type]) ? params[:type] : "Carriage"
+  end
+
   def set_carriage
     @carriage = Carriage.find(params[:id])
   end
 
+  def type_class
+    type.constantize
+  end
+
   def carriage_params
-    params.require(:carriage).permit(:number, :carriage_type, :top_place, :lower_place,  :train_id)
+    params.require(:carriage).permit(:number, :type, :top_place, :lower_place,  :train_id)
   end
 end

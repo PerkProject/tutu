@@ -2,12 +2,8 @@
 <%= render 'common/errors', resource: @carriage %>
 
     <div class="field">
-      <%= f.label :number %><br>
-      <%= f.text_field :number %>
-    </div>
-    <div class="field">
       <%= f.label :carriage_type %>
-      <%= f.collection_select :carriage_type, Carriage::CARRIAGE_TYPES, :to_s, :to_s, include_blank: false %>
+      <%= f.select :type, Carriage.types.map {|r| [r.to_s.humanize, r.to_s.camelcase]}, {} %>
     </div>
     <div class="field">
       <%= f.label :top_place %>
