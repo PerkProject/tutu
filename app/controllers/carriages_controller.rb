@@ -21,7 +21,7 @@ class CarriagesController < ApplicationController
 
     respond_to do |format|
       if @carriage.save
-        format.html { redirect_to @carriage, notice: 'Carriage was successfully created.' }
+        format.html { redirect_to carriage_url(@carriage), notice: 'Carriage was successfully created.' }
       else
         format.html { render :new }
       end
@@ -31,7 +31,7 @@ class CarriagesController < ApplicationController
   def update
     respond_to do |format|
       if @carriage.update(carriage_params)
-        format.html { redirect_to @carriage, notice: 'Carriage was successfully updated.' }
+        format.html { redirect_to carriage_url(@carriage), notice: 'Carriage was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -52,7 +52,7 @@ class CarriagesController < ApplicationController
   end
 
   def type
-    Carriage.types.include?(params[:type]) ? params[:type] : "Carriage"
+    Carriage.types.include?(params[:type]) ? params[:type] : 'Carriage'
   end
 
   def set_carriage

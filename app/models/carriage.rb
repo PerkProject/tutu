@@ -10,14 +10,18 @@ class Carriage < ActiveRecord::Base
   validates :number, uniqueness: { scope: :train_id }
   validates :train_id, presence: true
 
+  self.inheritance_column = :type
+
   before_validation :set_number, on: :create
+
 
   def self.types
     CARRIAGE_TYPES.keys
   end
 
-  def self.types_name
-    CARRIAGE_TYPES.values
+
+  def type_name
+    self.class::types
   end
 
   protected

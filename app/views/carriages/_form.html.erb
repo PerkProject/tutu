@@ -1,4 +1,4 @@
-<%= form_for(@carriage) do |f| %>
+<%= form_for(@carriage, :as => :carriage) do |f| %>
 <%= render 'common/errors', resource: @carriage %>
 
     <div class="field">

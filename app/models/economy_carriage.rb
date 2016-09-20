@@ -7,4 +7,8 @@ class EconomyCarriage < Carriage
 
   scope :economy, -> { where(type: 'Economy') }
 
+  def self.model_name
+    Carriage.model_name
+  end
+
 end
