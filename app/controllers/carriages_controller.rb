@@ -64,6 +64,27 @@ class CarriagesController < ApplicationController
   end
 
   def carriage_params
-    params.require(type.underscore.to_sym).permit(:number, :type, :top_place, :lower_place,  :train_id)
+    params.require(type.underscore.to_sym).permit(:number, :type, :train_id, :top_place, :lower_place,
+                                                  :side_top_places, :side_lower_places, :seats)
   end
+#dont work
+  #def carriage_params
+  #  params.require(type.underscore.to_sym).permit(send("#{type.underscore}_params"))
+  #end
+#dont work
+ # def carriage_params(type)
+ #   case type
+ #     when 'CoupeCarriage'
+ #       params.require(type.underscore.to_sym).permit(:number, :type, :train_id, :top_place, :lower_place)
+ #     when 'EconomyCarriage'
+ #       params.require(type.underscore.to_sym).permit(:number, :type, :train_id, :top_place, :lower_place,
+ #                                                     :side_top_places, :side_lower_places)
+ #     when 'SedentaryCarriage'
+ #       params.require(type.underscore.to_sym).permit(:number, :type, :train_id, :seats)
+ #     when 'SvCarriage'
+ #       params.require(type.underscore.to_sym).permit(:number, :type, :train_id, :lower_place)
+ #   end
+ # end
+
 end
+

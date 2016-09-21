@@ -14,6 +14,7 @@ class Carriage < ActiveRecord::Base
 
   before_validation :set_number, on: :create
 
+  scope :sorted, -> { order(:number) }
 
   def self.types
     CARRIAGE_TYPES.keys
@@ -27,7 +28,7 @@ class Carriage < ActiveRecord::Base
   protected
 
   def set_number
-    current_number = train.carriages.maximum(:number) || 0
+    current_number = Carriage.where(train_id: train_id).maximum(:number) || 0
     self.number = current_number + 1
   end
 end

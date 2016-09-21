@@ -5,7 +5,11 @@ class Train < ActiveRecord::Base
   has_many :carriages
 
   def show_count_place_by_type(carriage_type, place_type)
-    self.carriages.where(carriage_type: carriage_type).sum(place_type)
+    self.carriages.where(type: carriage_type).sum(place_type)
+  end
+
+  def ordered_carriage
+    self.sort_order ? carriages.sorted.reverse_order : carriages.sorted
   end
 
 end
