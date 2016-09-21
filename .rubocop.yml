@@ -1,14 +1,15 @@
     AllCops:
       RunRailsCops: true
+      DisplayCopNames: true
       Include:
-          - Rakefile
-          - config.ru
+          - "Rakefile"
+          - "config.ru"
         Exclude:
-          - db/schema.rb
-          - vendor/**/*
-          - db/*
-          - tmp/**/*
-          - bin/**/*
+          - "db/schema.rb"
+          - "vendor/**/*"
+          - "db/*"
+          - "tmp/**/*"
+          - "bin/**/*"
 
     Documentation:
           Enabled: false
