@@ -1,13 +1,13 @@
 class Carriage < ActiveRecord::Base
-  CARRIAGE_TYPES = { CoupeCarriage: 'Купе',
-                     EconomyCarriage: 'Платцкарт',
-                     SvCarriage: 'СВ',
-                     SedentaryCarriage: 'Сидячий' }.freeze
+  CARRIAGE_TYPES = {CoupeCarriage:     "Купе",
+                    EconomyCarriage:   "Платцкарт",
+                    SvCarriage:        "СВ",
+                    SedentaryCarriage: "Сидячий"}.freeze
 
   belongs_to :train
 
   validates :number, presence: true
-  validates :number, uniqueness: { scope: :train_id }
+  validates :number, uniqueness: {scope: :train_id}
   validates :train_id, presence: true
 
   self.inheritance_column = :type
@@ -20,9 +20,8 @@ class Carriage < ActiveRecord::Base
     CARRIAGE_TYPES.keys
   end
 
-
   def type_name
-    self.class::types
+    self.class.types
   end
 
   protected

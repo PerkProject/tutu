@@ -10,6 +10,6 @@ class Route < ActiveRecord::Base
   private
 
   def order_stations
-   railway_stations_routes.each_with_index { |item, position | item.position = position }
+    railway_stations_routes.each_with_index {|item, position| item.position = position }
   end
 end
