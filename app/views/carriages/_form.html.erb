@@ -1,22 +1,47 @@
-<%= form_for(@carriage) do |f| %>
+<%= form_for(@carriage.becomes(Carriage)) do |f| %>
 <%= render 'common/errors', resource: @carriage %>
 
     <div class="field">
-      <%= f.label :number %><br>
-      <%= f.text_field :number %>
-    </div>
-    <div class="field">
       <%= f.label :carriage_type %>
-      <%= f.collection_select :carriage_type, Carriage::CARRIAGE_TYPES, :to_s, :to_s, include_blank: false %>
+      <%= f.select :type, Carriage.types.map {|r| [r.to_s.humanize, r.to_s.camelcase]}, {} %>
     </div>
+
+    <% if @carriage.type.to_s == 'CoupeCarriage' || @carriage.type.to_s =='EconomyCarriage'%>
     <div class="field">
       <%= f.label :top_place %>
-      <%= f.select :top_place, options_for_select(0..30, 5)%>
+      <%= f.number_field :top_place %>
     </div>
     <div class="field">
       <%= f.label :lower_place %>
-      <%= f.select :lower_place, options_for_select(0..30, 5)%>
+      <%= f.number_field :lower_place %>
     </div>
+    <% end %>
+
+    <% if @carriage.type.to_s =='EconomyCarriage'%>
+        <div class="field">
+          <%= f.label :side_top_places %>
+          <%= f.number_field :side_top_places %>
+        </div>
+        <div class="field">
+          <%= f.label :side_lower_places %>
+          <%= f.number_field :side_lower_places %>
+        </div>
+    <% end %>
+
+    <% if @carriage.type.to_s =='SvCarriage'%>
+        <div class="field">
+          <%= f.label :lower_place %>
+          <%= f.number_field :lower_place %>
+        </div>
+    <% end %>
+
+    <% if @carriage.type.to_s =='SedentaryCarriage'%>
+        <div class="field">
+          <%= f.label :seats %>
+          <%= f.number_field :seats %>
+        </div>
+    <% end %>
+
     <div class="field">
       <%= f.label :train %>
       <%= f.collection_select :train_id, Train.all, :id, :number %>
@@ -25,4 +50,4 @@
       <%= f.submit "#{ @carriage.new_record? ? 'Создать' : 'Изменить' }" %>
     </div>
 
-<% end %>
+   <% end %>

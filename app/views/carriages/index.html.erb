@@ -9,7 +9,6 @@
     <th colspan="3"></th>
   </tr>
   </thead>
-
   <tbody>
   <%= render @carriages %>
   </tbody>
@@ -17,7 +16,7 @@
 
 <br>
 
-<%= link_to 'Создать новый вагон', new_carriage_path %>
+<%= link_to 'Создать новый вагон', sti_carriage_path(@type, nil, :new) %>
 
 
 <br>

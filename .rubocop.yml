@@ -1,17 +1,16 @@
     AllCops:
-      RunRailsCops: true
       Include:
-          - Rakefile
-          - config.ru
-        Exclude:
-          - db/schema.rb
-          - vendor/**/*
-          - db/*
-          - tmp/**/*
-          - bin/**/*
-
-    Documentation:
-          Enabled: false
+      - "**/*.rake"
+      Exclude:
+      - "vendor/**/*"
+      - "db/**/*"
+      - "test/**/*"
+      - "config/**/*"
+      - "bin/*"
+      - "**/Gemfile"
+      - "**/Rakefile"
+      DisplayCopNames: false
+      StyleGuideCopsOnly: false
 
     # Commonly used screens these days easily fit more than 80 characters.
     Metrics/LineLength:

@@ -1,6 +1,6 @@
 <h1>Редактировать вагон</h1>
 
-<%= render 'form' %>
+<%= render 'form', carriage: @carriage %>
 
 <%= link_to 'Показать', @carriage %> |
-<%= link_to 'Назад', carriages_path %>
+<%= link_to 'Назад', sti_carriage_path(@type) %>

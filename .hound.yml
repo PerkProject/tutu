@@ -1,4 +1,2 @@
 ruby:
   config_file: .rubocop.yml
-ruby:
-  enabled: false

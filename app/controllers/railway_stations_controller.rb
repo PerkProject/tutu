@@ -1,5 +1,5 @@
 class RailwayStationsController < ApplicationController
-  before_action :set_railway_station, only: [:show, :edit, :update, :destroy]
+  before_action :set_railway_station, only: %i(show edit update destroy)
 
   def index
     @railway_stations = RailwayStation.all
@@ -20,7 +20,7 @@ class RailwayStationsController < ApplicationController
 
     respond_to do |format|
       if @railway_station.save
-        format.html { redirect_to @railway_station, notice: 'Railway station was successfully created.' }
+        format.html { redirect_to @railway_station, notice: "Railway station was successfully created." }
       else
         format.html { render :new }
       end
@@ -30,7 +30,7 @@ class RailwayStationsController < ApplicationController
   def update
     respond_to do |format|
       if @railway_station.update(railway_station_params)
-        format.html { redirect_to @railway_station, notice: 'Railway station was successfully updated.' }
+        format.html { redirect_to @railway_station, notice: "Railway station was successfully updated." }
       else
         format.html { render :edit }
       end
@@ -40,16 +40,17 @@ class RailwayStationsController < ApplicationController
   def destroy
     @railway_station.destroy
     respond_to do |format|
-      format.html { redirect_to railway_stations_url, notice: 'Railway station was successfully destroyed.' }
+      format.html { redirect_to railway_stations_url, notice: "Railway station was successfully destroyed." }
     end
   end
 
   private
-    def set_railway_station
-      @railway_station = RailwayStation.find(params[:id])
-    end
 
-    def railway_station_params
-      params.require(:railway_station).permit(:title)
-    end
+  def set_railway_station
+    @railway_station = RailwayStation.find(params[:id])
+  end
+
+  def railway_station_params
+    params.require(:railway_station).permit(:title)
+  end
 end
