@@ -23,26 +23,10 @@
 </p>
 
 <p>
-  <storng>Список вагонов поезда</storng>
-  <% if @train.ordered_carriage.present? %>
-    <ul>
-  <% @train.ordered_carriage.each do |carriage| %>
-      <li>
-        <%= link_to carriage.number, carriage %>
-      </li>
-  <% end %>
- </ul>
-  <% else %>
-    Вагонов нет
-  <%end%>
-</p>
-
-
-<p>
   <strong>Информация о вагонах в составе поезда:</strong>
   <% if @train.carriages.present? %>
 <ul>
-  <% @train.carriages.group(:type).count.each do |carriage_type, cnt| %>
+  <% @train.carriages.group(:carriage_type).count.each do |carriage_type, cnt| %>
     <li><%= "Тип вагона : #{carriage_type} "%>
       <br>
         <%= "Количество : #{cnt} " %>
@@ -50,18 +34,12 @@
         <%= "Количество верхних мест : #{ @train.show_count_place_by_type(carriage_type,:top_place) }"%>
       <br>
         <%= "Количество нижних мест : #{ @train.show_count_place_by_type(carriage_type,:lower_place) }"%>
-      <br>
-        <%= "Количество боковых верхних мест : #{ @train.show_count_place_by_type(carriage_type,:side_top_places) }"%>
-      <br>
-       <%= "Количество боковых нижних мест : #{ @train.show_count_place_by_type(carriage_type,:side_lower_places) }"%>
-      <br>
-       <%= "Количество сидячих мест : #{ @train.show_count_place_by_type(carriage_type,:seats) }"%>
     </li>
   <% end %>
 </ul>
 <% else %>
     <p>
-      <strong>информации нет </strong>
+      <strong>Вагонов нет </strong>
     </p>
 <% end %>
 </p>

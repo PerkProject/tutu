@@ -13,10 +13,6 @@
     <%= f.label :route %>
     <%= f.collection_select :route_id, Route.all, :id, :name %>
   </div>
-    <div class="field">
-      <%= f.label :sort_carriage %>
-      <%= f.check_box :sort_order %>
-    </div>
   <div class="actions">
     <%= f.submit "#{ @train.new_record? ? 'Создать' : 'Изменить' }" %>
   </div>
