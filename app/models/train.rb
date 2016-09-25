@@ -9,6 +9,7 @@ class Train < ActiveRecord::Base
   end
 
   def ordered_carriage
-    sort_order ? carriages.sorted.reverse_order : carriages.sorted
+    order = head_sort_order ? "desc" : "asc"
+    carriages.order(number: order)
   end
 end

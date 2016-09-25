@@ -9,6 +9,7 @@
       - "bin/*"
       - "**/Gemfile"
       - "**/Rakefile"
+      - "app/helpers/*"
       DisplayCopNames: false
       StyleGuideCopsOnly: false
 
@@ -24,6 +25,9 @@
     # The guiding principle of classes is SRP, SRP can't be accurately measured by LoC
     Metrics/ClassLength:
       Max: 1500
+
+    Style/FrozenStringLiteralComment:
+      Enabled: false
 
     # No space makes the method definition shorter and differentiates
     # from a regular assignment.

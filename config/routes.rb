@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :trains
   resources :railway_stations
   resources :routes
   resources :carriages
@@ -7,7 +6,12 @@ Rails.application.routes.draw do
   resources :economy_carriages, controller: 'carriages', type: 'EconomyCarriage'
   resources :sv_carriages, controller: 'carriages', type: 'SvCarriage'
   resources :sedentary_carriages, controller: 'carriages', type: 'SedentaryCarriage'
-  #resources :tickets
+  resources :trains
+  #do
+  #  resources :carriages, shallow: true
+  #end
+  resources :tickets, only: [:create, :show]
+  resource :search, only: [:new, :show, :edit, :create]
   get 'welcome/index'
   root 'welcome#index'
 

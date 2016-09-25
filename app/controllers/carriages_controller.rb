@@ -3,21 +3,21 @@ class CarriagesController < ApplicationController
   before_action :set_carriage, only: %i(show edit update destroy)
 
   def index
-    @carriages = type_class.all
+    @carriages = Carriage.all
   end
 
   def show
   end
 
   def new
-    @carriage = type_class.new
+    @carriage = Carriage.new(type: params[:type])
   end
 
   def edit
   end
 
   def create
-    @carriage = type_class.new(carriage_params)
+    @carriage = Carriage.new(carriage_params)
 
     respond_to do |format|
       if @carriage.save
@@ -56,33 +56,11 @@ class CarriagesController < ApplicationController
   end
 
   def set_carriage
-    @carriage = type_class.find(params[:id])
-  end
-
-  def type_class
-    type.constantize
+    @carriage = Carriage.find(params[:id])
   end
 
   def carriage_params
     params.require(type.underscore.to_sym).permit(:number, :type, :train_id, :top_place, :lower_place,
                                                   :side_top_places, :side_lower_places, :seats)
   end
-  # dont work
-  # def carriage_params
-  #  params.require(type.underscore.to_sym).permit(send("#{type.underscore}_params"))
-  # end
-  # dont work
-  # def carriage_params(type)
-  #   case type
-  #     when 'CoupeCarriage'
-  #       params.require(type.underscore.to_sym).permit(:number, :type, :train_id, :top_place, :lower_place)
-  #     when 'EconomyCarriage'
-  #       params.require(type.underscore.to_sym).permit(:number, :type, :train_id, :top_place, :lower_place,
-  #                                                     :side_top_places, :side_lower_places)
-  #     when 'SedentaryCarriage'
-  #       params.require(type.underscore.to_sym).permit(:number, :type, :train_id, :seats)
-  #     when 'SvCarriage'
-  #       params.require(type.underscore.to_sym).permit(:number, :type, :train_id, :lower_place)
-  #   end
-  # end
 end
