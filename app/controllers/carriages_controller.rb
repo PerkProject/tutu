@@ -1,66 +1,62 @@
 class CarriagesController < ApplicationController
-  before_action :set_type
   before_action :set_carriage, only: %i(show edit update destroy)
+  before_action :set_train, only: %i(new, create, index)
 
   def index
-    @carriages = Carriage.all
+    redirect_to @train
   end
 
   def show
   end
 
   def new
-    @carriage = Carriage.new(type: params[:type])
+    @carriage = Carriage.new
   end
 
   def edit
   end
 
   def create
-    @carriage = Carriage.new(carriage_params)
-
-    respond_to do |format|
+    if Carriage.types.include?(carriage_params[:type])
+      carriage_class = carriage_params[:carriage][:type].constantize
+      @carriage = carriage_class.new(carriage_params)
       if @carriage.save
-        format.html { redirect_to carriage_url(@carriage), notice: "Carriage was successfully created." }
+        redirect_to @carriage.train, notice: 'Wagon was successfully created.'
       else
-        format.html { render :new }
+        render :new
       end
+    else
+      redirect_to new_train_carriage_path,  alert: 'Что-то пошло не так'
     end
   end
 
+
   def update
-    respond_to do |format|
       if @carriage.update(carriage_params)
-        format.html { redirect_to carriage_url(@carriage), notice: "Carriage was successfully updated." }
+        redirect_to @carriage.train, notice: "Carriage was successfully updated."
       else
-        format.html { render :edit }
+        render :edit
       end
-    end
   end
 
   def destroy
+    train = @carriage.train
     @carriage.destroy
-    respond_to do |format|
-      format.html { redirect_to carriages_url, notice: "Carriage was successfully destroyed." }
-    end
+    redirect_to train, notice: "Carriage was successfully destroyed."
   end
 
   private
-
-  def set_type
-    @type = type
-  end
-
-  def type
-    Carriage.types.include?(params[:type]) ? params[:type] : "Carriage"
-  end
 
   def set_carriage
     @carriage = Carriage.find(params[:id])
   end
 
+  def set_train
+    @train = Train.find(params[:train_id])
+  end
+
   def carriage_params
-    params.require(type.underscore.to_sym).permit(:number, :type, :train_id, :top_place, :lower_place,
+    params.require(:carriage).permit(:type, :train_id, :top_place, :lower_place,
                                                   :side_top_places, :side_lower_places, :seats)
   end
 end

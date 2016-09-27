@@ -23,18 +23,21 @@
 </p>
 
 <p>
-  <storng>Список вагонов поезда</storng>
+  <storng>Список вагонов поезда:</storng>
+  <br>
   <% if @train.ordered_carriage.present? %>
     <ul>
   <% @train.ordered_carriage.each do |carriage| %>
-      <li>
-        <%= link_to carriage.number, carriage %>
-      </li>
+      <li><%= link_to carriage.number, carriage %></li>
+          <li><%= link_to carriage.type.to_s, carriage_path(carriage) %></li>
+          <li><%= link_to "Удалить", carriage_path(carriage), method: :delete, data: { confirm: "Вы уверены?" } %></li>
   <% end %>
  </ul>
   <% else %>
     Вагонов нет
   <%end%>
+<br>
+<%= link_to 'Добавить вагон', new_train_carriage_path(@train) %>
 </p>
 
 

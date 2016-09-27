@@ -1,0 +1,29 @@
+<h1>Заказ</h1>
+
+<h2>Информация:</h2>
+<table>
+  <tbody>
+  <tr>
+    <th>Номер поезда:</th>
+    <td><%= @ticket.train.number %></td>
+  </tr>
+  <tr>
+    <th>Маршрут:</th>
+    <td><%= @ticket.train.route.name %></td>
+  </tr>
+  <tr>
+    <th>Станция отправления:</th>
+    <td><%= @ticket.start_station.title %></td>
+  </tr>
+  <tr>
+    <th>Станция назначения:</th>
+    <td><%= @ticket.end_station.title %></td>
+  </tr>
+  </tbody>
+</table>
+
+<h2>Данные пассажира:</h2>
+<div>
+  <%= render 'form' %>
+
+</div>

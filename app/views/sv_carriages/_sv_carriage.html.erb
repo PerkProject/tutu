@@ -1,8 +1,8 @@
 <tr>
   <td><%= sv_carriage.number %></td>
-  <td><%= link_to 'Показать', sti_carriage_path(sv_carriage.type, sv_carriage) %></td>
-  <td><%= link_to 'Редактировать', sti_carriage_path(sv_carriage.type, sv_carriage, :edit) %></td>
-  <td><%= link_to 'Удалить', sti_carriage_path(sv_carriage.type, sv_carriage),
+  <td><%= link_to 'Показать', carriage_path(sv_carriage.type, sv_carriage) %></td>
+  <td><%= link_to 'Редактировать', edit_carriage_path(sv_carriage.type, sv_carriage, :edit) %></td>
+  <td><%= link_to 'Удалить', carriage_path(sv_carriage.type, sv_carriage),
                   method: :delete, data: { confirm: 'Вы уверены?' } %></td>
 </tr>
 

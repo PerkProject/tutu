@@ -1,8 +1,8 @@
 <tr>
   <td><%= sedentary_carriage.number %></td>
-  <td><%= link_to 'Показать', sti_carriage_path(sedentary_carriage.type, sedentary_carriage) %></td>
-  <td><%= link_to 'Редактировать', sti_carriage_path(sedentary_carriage.type, sedentary_carriage, :edit) %></td>
-  <td><%= link_to 'Удалить', sti_carriage_path(sedentary_carriage.type, sedentary_carriage),
+  <td><%= link_to 'Показать', carriage_path(sedentary_carriage.type, sedentary_carriage) %></td>
+  <td><%= link_to 'Редактировать', edit_carriage_path(sedentary_carriage.type, sedentary_carriage, :edit) %></td>
+  <td><%= link_to 'Удалить', carriage_path(sedentary_carriage.type, sedentary_carriage),
                   method: :delete, data: { confirm: 'Вы уверены?' } %></td>
 </tr>
 

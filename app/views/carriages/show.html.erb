@@ -28,5 +28,5 @@
   <strong>Нижних</strong>
 </p>
 
-<%= link_to 'Редактировать', sti_carriage_path(@carriage.type, @carriage, :edit)%> |
-<%= link_to 'Назад', carriages_path %>
+<%= link_to 'Редактировать', edit_carriage_path(@carriage)%> |
+<%= link_to 'Назад', @carriage.train %>

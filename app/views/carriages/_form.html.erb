@@ -1,12 +1,18 @@
-<%= form_for(@carriage.becomes(Carriage)) do |f| %>
+<%= form_for [@train, @carriage.becomes(Carriage)] , url:train_carriages_path   do |f| %>
+
+
+
 <%= render 'common/errors', resource: @carriage %>
+
+    <% f.object = @carriage %>
 
     <div class="field">
       <%= f.label :carriage_type %>
       <%= f.select :type, Carriage.types.map {|r| [r.to_s.humanize, r.to_s.camelcase]}, {} %>
     </div>
 
-    <% if @carriage.type.to_s == 'CoupeCarriage' || @carriage.type.to_s =='EconomyCarriage'%>
+
+
     <div class="field">
       <%= f.label :top_place %>
       <%= f.number_field :top_place %>
@@ -15,37 +21,23 @@
       <%= f.label :lower_place %>
       <%= f.number_field :lower_place %>
     </div>
-    <% end %>
-
-    <% if @carriage.type.to_s =='EconomyCarriage'%>
-        <div class="field">
-          <%= f.label :side_top_places %>
-          <%= f.number_field :side_top_places %>
-        </div>
-        <div class="field">
-          <%= f.label :side_lower_places %>
-          <%= f.number_field :side_lower_places %>
-        </div>
-    <% end %>
-
-    <% if @carriage.type.to_s =='SvCarriage'%>
-        <div class="field">
-          <%= f.label :lower_place %>
-          <%= f.number_field :lower_place %>
-        </div>
-    <% end %>
-
-    <% if @carriage.type.to_s =='SedentaryCarriage'%>
-        <div class="field">
-          <%= f.label :seats %>
-          <%= f.number_field :seats %>
-        </div>
-    <% end %>
 
     <div class="field">
-      <%= f.label :train %>
-      <%= f.collection_select :train_id, Train.all, :id, :number %>
+      <%= f.label :side_top_places %>
+      <%= f.number_field :side_top_places %>
     </div>
+    <div class="field">
+      <%= f.label :side_lower_places %>
+      <%= f.number_field :side_lower_places %>
+    </div>
+
+    <div class="field">
+      <%= f.label :seats %>
+      <%= f.number_field :seats %>
+    </div>
+
+
+
     <div class="actions">
       <%= f.submit "#{ @carriage.new_record? ? 'Создать' : 'Изменить' }" %>
     </div>
