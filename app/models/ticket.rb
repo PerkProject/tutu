@@ -10,7 +10,7 @@ class Ticket < ActiveRecord::Base
   private
 
   def set_number
-    syms = ['a'..'z','A'..'Z','0'..'9'].map{ |range| range.to_a }.flatten
-    self.number = (0...8).map{ syms[ rand(syms.size) ] }.join
+    syms = ["a".."z", "A".."Z", "0".."9"].map(&:to_a).flatten
+    self.number = (0...8).map { syms[rand(syms.size)] }.join
   end
 end

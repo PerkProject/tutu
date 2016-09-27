@@ -1,6 +1,6 @@
 class CarriagesController < ApplicationController
   before_action :set_carriage, only: %i(show edit update destroy)
-  before_action :set_train, only: %i(new, create, index)
+  before_action :set_train, only: %i(new create index)
 
   def index
     redirect_to @train
@@ -21,22 +21,21 @@ class CarriagesController < ApplicationController
       carriage_class = carriage_params[:carriage][:type].constantize
       @carriage = carriage_class.new(carriage_params)
       if @carriage.save
-        redirect_to @carriage.train, notice: 'Wagon was successfully created.'
+        redirect_to @carriage.train, notice: "Wagon was successfully created."
       else
         render :new
       end
     else
-      redirect_to new_train_carriage_path,  alert: 'Что-то пошло не так'
+      redirect_to new_train_carriage_path, alert: "Что-то пошло не так"
     end
   end
 
-
   def update
-      if @carriage.update(carriage_params)
-        redirect_to @carriage.train, notice: "Carriage was successfully updated."
-      else
-        render :edit
-      end
+    if @carriage.update(carriage_params)
+      redirect_to @carriage.train, notice: "Carriage was successfully updated."
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -57,6 +56,6 @@ class CarriagesController < ApplicationController
 
   def carriage_params
     params.require(:carriage).permit(:type, :train_id, :top_place, :lower_place,
-                                                  :side_top_places, :side_lower_places, :seats)
+                                     :side_top_places, :side_lower_places, :seats)
   end
 end

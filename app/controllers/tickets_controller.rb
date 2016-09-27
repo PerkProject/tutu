@@ -4,16 +4,16 @@ class TicketsController < ApplicationController
   end
 
   def buy
-    @ticket = Ticket.new(train_id: params[:train_id],
+    @ticket = Ticket.new(train_id:         params[:train_id],
                          start_station_id: params[:start_station_id],
-                         end_station_id: params[:end_station_id])
+                         end_station_id:   params[:end_station_id])
   end
 
   def create
     @ticket = Ticket.new(ticket_params)
 
     if @ticket.save
-      redirect_to @ticket, notice: 'Спасибо за покупку!'
+      redirect_to @ticket, notice: "Спасибо за покупку!"
     else
       render :buy
     end
