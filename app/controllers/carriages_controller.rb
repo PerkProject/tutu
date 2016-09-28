@@ -17,14 +17,13 @@ class CarriagesController < ApplicationController
   end
 
   def create
-      @carriage = @train.carriages.new(carriage_params)
-      if @carriage.save
-        redirect_to @carriage.train, notice: "Wagon was successfully created."
-      else
-        render :new
-      end
+    @carriage = @train.carriages.new(carriage_params)
+    if @carriage.save
+      redirect_to @carriage.train, notice: "Wagon was successfully created."
+    else
+      render :new
+    end
   end
-
 
   def update
     if @carriage.update(carriage_params)
