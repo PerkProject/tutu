@@ -4,8 +4,6 @@
 
 <%= render 'common/errors', resource: @carriage %>
 
-    <% f.object = @carriage %>
-
     <div class="field">
       <%= f.label :carriage_type %>
       <%= f.select :type, Carriage.types.map {|r| [r.to_s.humanize, r.to_s.camelcase]}, {} %>

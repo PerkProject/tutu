@@ -17,18 +17,14 @@ class CarriagesController < ApplicationController
   end
 
   def create
-    if Carriage.types.include?(carriage_params[:type])
-      carriage_class = carriage_params[:carriage][:type].constantize
-      @carriage = carriage_class.new(carriage_params)
+      @carriage = @train.carriages.new(carriage_params)
       if @carriage.save
         redirect_to @carriage.train, notice: "Wagon was successfully created."
       else
         render :new
       end
-    else
-      redirect_to new_train_carriage_path, alert: "Что-то пошло не так"
-    end
   end
+
 
   def update
     if @carriage.update(carriage_params)
@@ -55,7 +51,7 @@ class CarriagesController < ApplicationController
   end
 
   def carriage_params
-    params.require(:carriage).permit(:type, :train_id, :top_place, :lower_place,
+    params.require(:carriage).permit(:type, :top_place, :lower_place,
                                      :side_top_places, :side_lower_places, :seats)
   end
 end

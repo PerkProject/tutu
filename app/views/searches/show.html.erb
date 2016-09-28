@@ -4,12 +4,12 @@
     <%= render 'common/errors', resource: @search %>
     <div class="field">
       <%= label_tag 'Станция отправки' %>
-      <%= f.collection_select :start_station_id, RailwayStation.all.ordered_by_title, :id, :title %>
+      <%= f.collection_select :start_station_id, RailwayStation.ordered_by_title, :id, :title %>
     </div>
 
     <div class="field">
       <%= label_tag 'Станция прибытия' %>
-      <%= f.collection_select :end_station_id, RailwayStation.all.ordered_by_title, :id, :title %>
+      <%= f.collection_select :end_station_id, RailwayStation.ordered_by_title, :id, :title %>
     </div>
 
     <div class="actions">
@@ -35,8 +35,8 @@
                   <tr>
                     <td><%= link_to train.number, train %></td>
                     <td><%= link_to train.route.name, train.route %></td>
-                    <td><%= @search.start_station.position_in(train.route) %></td>
-                    <td><%= @search.end_station.position_in(train.route) %></td>
+                    <td><%= @search.start_station.position_in(train.route, :departure_time) %></td>
+                    <td><%= @search.end_station.position_in(train.route, :arrival_time) %></td>
                     <td>
                       <%= form_tag(buy_tickets_path) do %>
                           <%= hidden_field_tag :train_id, train.id %>

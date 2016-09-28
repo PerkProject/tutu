@@ -22,14 +22,14 @@
     <th>Станция отправления:</th>
     <td>
       <%= @ticket.start_station.title %>
-      ( <%= @ticket.start_station.position_in(@ticket.train.route) %>)
+      ( <%= @ticket.start_station.position_in(@ticket.train.route, :departure_time) %>)
     </td>
   </tr>
   <tr>
     <th>Станция прибытия:</th>
     <td>
       <%= @ticket.end_station.title %>
-      ( <%= @ticket.end_station.position_in(@ticket.train.route) %>)
+      ( <%= @ticket.end_station.position_in(@ticket.train.route, :arrival_time) %>)
     </td>
   </tr>
   </tbody>
