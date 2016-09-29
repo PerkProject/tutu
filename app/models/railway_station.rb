@@ -15,7 +15,7 @@ class RailwayStation < ActiveRecord::Base
   end
 
   def update_time(route, arrival_time, departure_time)
-    station_route.update(arrival_time: arrival_time,
+    station_route.update(arrival_time:   arrival_time,
                          departure_time: departure_time) if station_route(route)
   end
 
