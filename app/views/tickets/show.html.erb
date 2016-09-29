@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Информация о заказе</h1>
+
+<p>Дата покупки: <%= @ticket.created_at.strftime '%d.%m.%Y %H:%M' %></p>
+
+<table>
+  <tbody>
+  <tr>
+    <th>Номер билета:</th>
+    <td><%= @ticket.number %></td>
+  </tr>
+  <tr>
+    <th>Номер поезда:</th>
+    <td><%= @ticket.train.number %></td>
+  </tr>
+  <tr>
+    <th>Маршрут:</th>
+    <td><%= @ticket.train.route.name %></td>
+  </tr>
+  <tr>
+    <th>Станция отправления:</th>
+    <td>
+      <%= @ticket.start_station.title %>
+      ( <%= @ticket.start_station.position_in(@ticket.train.route, :departure_time) %>)
+    </td>
+  </tr>
+  <tr>
+    <th>Станция прибытия:</th>
+    <td>
+      <%= @ticket.end_station.title %>
+      ( <%= @ticket.end_station.position_in(@ticket.train.route, :arrival_time) %>)
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<%= link_to 'Назад', search_path %>

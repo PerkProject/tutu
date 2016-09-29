@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160920225404) do
+ActiveRecord::Schema.define(version: 20160927220734) do
 
   create_table "carriages", force: :cascade do |t|
     t.integer  "number"
@@ -20,11 +20,13 @@ ActiveRecord::Schema.define(version: 20160920225404) do
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "train_id"
     t.integer  "side_top_places"
     t.integer  "side_lower_places"
     t.integer  "seats"
+    t.integer  "train_id"
   end
+
+  add_index "carriages", ["train_id"], name: "index_carriages_on_train_id"
 
   create_table "railway_stations", force: :cascade do |t|
     t.string   "title"
@@ -36,6 +38,8 @@ ActiveRecord::Schema.define(version: 20160920225404) do
     t.integer "position",           default: 0
     t.integer "railway_station_id"
     t.integer "route_id"
+    t.string  "arrival_time"
+    t.string  "departure_time"
   end
 
   add_index "railway_stations_routes", ["railway_station_id"], name: "index_railway_stations_routes_on_railway_station_id"
@@ -52,10 +56,17 @@ ActiveRecord::Schema.define(version: 20160920225404) do
     t.datetime "updated_at",       null: false
     t.integer  "start_station_id"
     t.integer  "end_station_id"
+    t.string   "number"
+    t.string   "passenger_name"
+    t.string   "passport_number"
+    t.integer  "user_id"
+    t.integer  "train_id"
   end
 
   add_index "tickets", ["end_station_id"], name: "index_tickets_on_end_station_id"
   add_index "tickets", ["start_station_id"], name: "index_tickets_on_start_station_id"
+  add_index "tickets", ["train_id"], name: "index_tickets_on_train_id"
+  add_index "tickets", ["user_id"], name: "index_tickets_on_user_id"
 
   create_table "trains", force: :cascade do |t|
     t.string   "number"
@@ -63,7 +74,7 @@ ActiveRecord::Schema.define(version: 20160920225404) do
     t.datetime "updated_at",                        null: false
     t.integer  "current_station_id"
     t.integer  "route_id"
-    t.boolean  "sort_order",         default: true
+    t.boolean  "head_sort_order",    default: true
   end
 
   add_index "trains", ["current_station_id"], name: "index_trains_on_current_station_id"

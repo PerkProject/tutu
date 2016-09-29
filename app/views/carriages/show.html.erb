@@ -20,13 +20,22 @@
 </p>
 
 <p>
-  <strong>Количество мест:</strong>
+  <H3>Количество мест:</H3>
+  <strong>Верхние места:</strong>
+  <%= @carriage.top_place != 0 ? @carriage.top_place : "Отсутствуют" %>
   <br>
-  <%= @carriage.top_place %>
-  <strong>Верхних</strong>
-  <%= @carriage.lower_place %>
-  <strong>Нижних</strong>
+  <strong>Нижние места:</strong>
+  <%= @carriage.lower_place != 0 ?  @carriage.lower_place : "Отсутствуют"  %>
+  <br>
+  <strong>Верхние боковые места:</strong>
+  <%= @carriage.side_top_places != 0 ?  @carriage.side_top_places : "Отсутствуют"  %>
+  <br>
+  <strong>Нижние боковые места:</strong>
+  <%= @carriage.side_lower_places != 0 ?  @carriage.side_lower_places : "Отсутствуют"  %>
+  <br>
+  <strong>Сидячие места:</strong>
+  <%= @carriage.seats != 0 ?  @carriage.seats : "Отсутствуют"  %>
 </p>
 
-<%= link_to 'Редактировать', sti_carriage_path(@carriage.type, @carriage, :edit)%> |
-<%= link_to 'Назад', carriages_path %>
+<%= link_to 'Редактировать', edit_carriage_path(@carriage)%> |
+<%= link_to 'Назад', @carriage.train %>
