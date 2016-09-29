@@ -10,9 +10,12 @@ class RailwayStation < ActiveRecord::Base
   scope :ordered, -> { includes(:railway_stations_routes).uniq.order("railway_stations_routes.position") }
   scope :ordered_by_title, -> { order(:title) }
 
-  def update_position(route, position, arrival_time, departure_time)
-    station_route.update(position:       position,
-                         arrival_time:   arrival_time,
+  def update_position(route, position)
+    station_route.update(position: position) if station_route(route)
+  end
+
+  def update_time(route, arrival_time, departure_time)
+    station_route.update(arrival_time: arrival_time,
                          departure_time: departure_time) if station_route(route)
   end
 
