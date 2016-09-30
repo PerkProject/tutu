@@ -29,8 +29,8 @@
     <ul>
   <% @train.ordered_carriage.each do |carriage| %>
       <li><%= carriage.number %>
-          <%= link_to "Показать", admin_train_carriages_path(carriage) %>
-          <%= link_to "Удалить",  admin_train_carriages_path(carriage), method: :delete, data: { confirm: "Вы уверены?" } %></li>
+          <%= link_to "Показать", admin_carriage_path(carriage) %>
+          <%= link_to "Удалить",  admin_carriage_path(carriage), method: :delete, data: { confirm: "Вы уверены?" } %></li>
   <% end %>
  </ul>
   <% else %>

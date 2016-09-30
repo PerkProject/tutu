@@ -3,7 +3,7 @@ class Admin::CarriagesController < ApplicationController
   before_action :set_train, only: %i(new create index)
 
   def index
-    redirect_to @train
+    redirect_to [:admin, @train]
   end
 
   def show
