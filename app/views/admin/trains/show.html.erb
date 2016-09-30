@@ -7,7 +7,7 @@
 <p>
   <strong>Находится на станции:</strong>
   <% if @train.current_station.present? %>
-      <%= link_to  @train.current_station.title, @train.current_station %>
+      <%= link_to  @train.current_station.title, [:admin, @train.current_station] %>
   <% else %>
       Не указано
   <% end %>
@@ -16,7 +16,7 @@
 <p>
 <strong>Следует по маршруту:</strong>
   <% if @train.route.present? %>
-    <%=  link_to @train.route.name, @train.route %>
+    <%=  link_to @train.route.name, [:admin, @train.route] %>
   <% else %>
     Не указано
   <%end%>
@@ -29,15 +29,15 @@
     <ul>
   <% @train.ordered_carriage.each do |carriage| %>
       <li><%= carriage.number %>
-          <%= link_to "Показать", carriage_path(carriage) %>
-          <%= link_to "Удалить", carriage_path(carriage), method: :delete, data: { confirm: "Вы уверены?" } %></li>
+          <%= link_to "Показать", admin_train_carriages_path(carriage) %>
+          <%= link_to "Удалить",  admin_train_carriages_path(carriage), method: :delete, data: { confirm: "Вы уверены?" } %></li>
   <% end %>
  </ul>
   <% else %>
     Вагонов нет
   <%end%>
 <br>
-<%= link_to 'Добавить вагон', new_train_carriage_path(@train) %>
+<%= link_to 'Добавить вагон', new_admin_train_carriage_path(@train) %>
 </p>
 
 
@@ -69,5 +69,5 @@
 <% end %>
 </p>
 
-<%= link_to 'Редактировать', edit_train_path(@train) %> |
-<%= link_to 'Назад', trains_path %>
+<%= link_to 'Редактировать', edit_admin_train_path(@train) %> |
+<%= link_to 'Назад', admin_trains_path %>
