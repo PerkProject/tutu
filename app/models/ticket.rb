@@ -17,6 +17,6 @@ class Ticket < ActiveRecord::Base
   end
 
   def send_notification
-    TicketsMailer.buy_ticket(self.user, self).deliver_now
+    TicketsMailer.buy_ticket(user, self).deliver_now
   end
 end
