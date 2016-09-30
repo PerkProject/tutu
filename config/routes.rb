@@ -1,25 +1,29 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
-  get 'welcome/index'
+  devise_for :users
 
-  resources :trains do
-    resources :carriages, shallow: true
-  end
+
   resource :search, only: [:show, :create]
-
-  resources :railway_stations do
-    patch :update_position, on: :member
-  end
-  resources :routes
-  #resources :carriages
-  #resources :coupe_carriages, controller: 'carriages', type: 'CoupeCarriage'
-  #resources :economy_carriages, controller: 'carriages', type: 'EconomyCarriage'
-  #resources :sv_carriages, controller: 'carriages', type: 'SvCarriage'
-  #resources :sedentary_carriages, controller: 'carriages', type: 'SedentaryCarriage'
   resources :tickets, only: [:show, :create] do
     post :buy, on: :collection
   end
 
+  namespace :admin do
+    resources :railway_stations do
+      patch :update_position, on: :member
+    end
+
+    resources :trains do
+      resources :carriages, shallow: true
+    end
+
+    resources :routes
+    resources :tickets
+  end
+
+
+  get 'welcome/index'
+
+  root 'searches#show'
 
 
 
