@@ -33,8 +33,8 @@
               <tbody>
               <% @search.result.each do |train| %>
                   <tr>
-                    <td><%= link_to train.number, train %></td>
-                    <td><%= link_to train.route.name, train.route %></td>
+                    <td><%= train.number%></td>
+                    <td><%= train.route.name %></td>
                     <td><%= @search.start_station.position_in(train.route, :departure_time) %></td>
                     <td><%= @search.end_station.position_in(train.route, :arrival_time) %></td>
                     <td>

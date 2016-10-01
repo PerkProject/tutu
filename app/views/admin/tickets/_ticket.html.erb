@@ -1,0 +1,11 @@
+<tr>
+  <td><%= ticket.number %></td>
+  <td><%= link_to ticket.train.number, admin_train_path(ticket.train) %></td>
+  <td><%= link_to ticket.train.route.name, admin_route_path(ticket.train.route) %></td>
+  <td><%= ticket.start_station.title %></td>
+  <td><%= ticket.end_station.title %></td>
+  <td><%= ticket.user.full_name %></td>
+  <td><%= link_to 'Показать', admin_ticket_path(ticket) %></td>
+  <td><%= link_to 'Редактировать', edit_admin_ticket_path(ticket) %></td>
+  <td><%= link_to 'Удалить', admin_ticket_path(ticket), method: :delete, data: {confirm: 'Вы уверены?'} %></td>
+</tr>
