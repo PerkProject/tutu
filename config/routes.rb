@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   resource :search, only: [:show, :create]
   resources :tickets, only: [:show, :create] do
-    post :buy, on: :collection
+    collection do
+      get :show_my
+      post :buy
+    end
   end
 
   namespace :admin do
@@ -16,12 +19,10 @@ Rails.application.routes.draw do
       resources :carriages, shallow: true
     end
 
+    get 'welcome/index'
     resources :routes
     resources :tickets
   end
-
-
-  get 'welcome/index'
 
   root 'searches#show'
 

@@ -11,7 +11,7 @@
     <p>Станция входит в следующие маршруты:</p>
     <ul>
       <% @railway_station.routes.each do |route| %>
-          <li><%= link_to route.name, route %></li>
+          <li><%= link_to route.name, [:admin, route] %></li>
       <% end %>
     </ul>
 <% end %>
@@ -22,7 +22,7 @@
     <ul>
       <% @railway_station.trains.each do |train| %>
           <li>
-            <%= link_to train.number, train %>
+            <%= link_to train.number, [:admin, train] %>
           </li>
       <% end %>
     </ul>
@@ -31,5 +31,5 @@
 <% end %>
 </p>
 
-<%= link_to 'Редактировать', edit_railway_station_path(@railway_station) %> |
-<%= link_to 'Назад', railway_stations_path %>
+<%= link_to 'Редактировать', edit_admin_railway_station_path(@railway_station) %> |
+<%= link_to 'Назад', admin_railway_stations_path %>

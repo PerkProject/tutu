@@ -11,7 +11,7 @@
     <ul>
       <% @route.railway_stations.ordered.each do |station| %>
           <li>
-            <%= link_to station.title, station %>
+            <%= link_to station.title, [:admin,station] %>
           </li>
       <% end %>
     </ul>
@@ -26,7 +26,7 @@
     <ul>
       <% @route.trains.each do |train| %>
           <li>
-            <%= link_to train.number, train %>
+            <%= link_to train.number, [:admin, train]%>
           </li>
       <% end %>
     </ul>
@@ -37,5 +37,5 @@
 <% end %>
 </p>
 
-<%= link_to 'Редактировать', edit_route_path(@route) %> |
-<%= link_to 'Назад', routes_path %>
+<%= link_to 'Редактировать', edit_admin_route_path(@route) %> |
+<%= link_to 'Назад', admin_routes_path %>

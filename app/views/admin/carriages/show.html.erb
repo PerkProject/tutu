@@ -13,7 +13,7 @@
 <p>
   <strong>Прицеплен к поезду:</strong>
   <% if @carriage.train.present? %>
-      <%= link_to  @carriage.train.number, @carriage.train %>
+      <%= link_to  @carriage.train.number, [:admin, @carriage.train] %>
   <% else %>
       Не указано
   <% end %>
@@ -37,5 +37,5 @@
   <%= @carriage.seats != 0 ?  @carriage.seats : "Отсутствуют"  %>
 </p>
 
-<%= link_to 'Редактировать', edit_carriage_path(@carriage)%> |
-<%= link_to 'Назад', @carriage.train %>
+<%= link_to 'Редактировать', admin_edit_carriage_path(@carriage)%> |
+<%= link_to 'Назад', [:admin, @carriage.train] %>
