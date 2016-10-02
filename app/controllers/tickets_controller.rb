@@ -2,6 +2,10 @@ class TicketsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_ticket, only: %i(show destroy)
 
+  def index
+    @tickets = current_user.tickets
+  end
+
   def show
   end
 
@@ -14,7 +18,7 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = current_user.tickets.new(ticket_params)
-    current_user.tickets << @ticket
+
     if @ticket.save
       redirect_to @ticket, notice: "Спасибо за покупку!"
     else
@@ -24,12 +28,9 @@ class TicketsController < ApplicationController
 
   def destroy
     @ticket.destroy
-    redirect_to show_my_tickets_path, notice: "Ticket was successfully deleted."
+    redirect_to tickets_path, notice: "Ticket was successfully deleted."
   end
 
-  def index
-    @tickets = current_user.tickets
-  end
 
   private
 

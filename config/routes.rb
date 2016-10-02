@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  root 'searches#show'
 
   resource :search do
     get '/' => 'searches#new'
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resource :search, only: [:show, :create]
-  resources :tickets, only: [:show, :destroy] do
+  resources :tickets, only: [:show, :create] do
     collection do
       get :index
       post :buy
@@ -30,7 +31,6 @@ Rails.application.routes.draw do
     resources :tickets
   end
 
-  root 'searches#show'
 
 
 

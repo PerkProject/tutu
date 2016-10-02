@@ -14,25 +14,20 @@
               <tbody>
               <% @search.result.each do |train| %>
                   <tr>
+                    <%= form_tag buy_tickets_path do %>
                     <td><%= train.number%></td>
+                        <%= hidden_field_tag :train_id, train.id %>
                     <td><%= train.route.name %></td>
                     <td><%= @search.start_station.position_in(train.route, :departure_time) %></td>
+                        <%= hidden_field_tag :start_station_id, @search.start_station_id %>
                     <td><%= @search.end_station.position_in(train.route, :arrival_time) %></td>
-                    <td>
-                      <% if current_user %>
-                      <%= form_tag(buy_tickets_path) do %>
-                          <%= hidden_field_tag :train_id, train.id %>
-                          <%= hidden_field_tag :start_station_id, @search.start_station_id %>
-                          <%= hidden_field_tag :end_station_id, @search.end_station_id %>
-                          <%= submit_tag 'Купить билет' %>
-                      <% end %>
-                      <% end %>
-                    </td>
+                        <%= hidden_field_tag :end_station_id, @search.end_station_id %>
+                        <td><%= submit_tag 'Купить' %></td>
                   </tr>
               <% end %>
               </tbody>
             </table>
         <% end %>
+ <% end %>
 
  <%= link_to 'К поиску', search_url %>
-
