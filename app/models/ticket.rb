@@ -12,8 +12,7 @@ class Ticket < ActiveRecord::Base
   private
 
   def set_number
-    syms = ["a".."z", "A".."Z", "0".."9"].map(&:to_a).flatten
-    self.number = (0...8).map { syms[rand(syms.size)] }.join
+    self.number = ["a".."z", "A".."Z", "0".."9"].map(&:to_a).flatten.sample(8).join
   end
 
   def send_notification

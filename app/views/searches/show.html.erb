@@ -1,25 +1,6 @@
-<H1>Поиск билетов</H1>
-
-<%= form_for(@search, method: :post, url: search_path) do |f| %>
-    <%= render 'common/errors', resource: @search %>
-    <div class="field">
-      <%= label_tag 'Станция отправки' %>
-      <%= f.collection_select :start_station_id, RailwayStation.ordered_by_title, :id, :title %>
-    </div>
-
-    <div class="field">
-      <%= label_tag 'Станция прибытия' %>
-      <%= f.collection_select :end_station_id, RailwayStation.ordered_by_title, :id, :title %>
-    </div>
-
-    <div class="actions">
-      <%= submit_tag 'Поиск' %>
-    </div>
-
-    <% if @search.result %>
-        <% if @search.result.empty? %>
-            <p>Search result is empty</p>
-        <% else %>
+ <% if @search.result.empty? %>
+     <p>Search result is empty</p>
+ <% else %>
             <table>
               <thead>
               <tr>
@@ -38,11 +19,13 @@
                     <td><%= @search.start_station.position_in(train.route, :departure_time) %></td>
                     <td><%= @search.end_station.position_in(train.route, :arrival_time) %></td>
                     <td>
+                      <% if current_user %>
                       <%= form_tag(buy_tickets_path) do %>
                           <%= hidden_field_tag :train_id, train.id %>
                           <%= hidden_field_tag :start_station_id, @search.start_station_id %>
                           <%= hidden_field_tag :end_station_id, @search.end_station_id %>
                           <%= submit_tag 'Купить билет' %>
+                      <% end %>
                       <% end %>
                     </td>
                   </tr>
@@ -50,5 +33,6 @@
               </tbody>
             </table>
         <% end %>
-    <% end %>
-<% end %>
+
+ <%= link_to 'К поиску', search_url %>
+

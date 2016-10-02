@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
     <span><%= "Привет, #{current_user.full_name}!" %></span> |
-    <span><%= link_to 'My tickets', show_my_tickets_path %></span> |
+    <span><%= link_to 'My tickets', tickets_path %></span> |
     <li><%= link_to "Выйти", destroy_user_session_path, method: :delete %></li>
     <p>Account: <%= current_user.email %> </p>
     <% if current_user.admin? %>

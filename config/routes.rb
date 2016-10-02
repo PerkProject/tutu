@@ -2,10 +2,15 @@ Rails.application.routes.draw do
   devise_for :users
 
 
+  resource :search do
+    get '/' => 'searches#new'
+    post '/' => 'searches#show'
+  end
+
   resource :search, only: [:show, :create]
-  resources :tickets, only: [:show, :create] do
+  resources :tickets, only: [:show, :destroy] do
     collection do
-      get :show_my
+      get :index
       post :buy
     end
   end
@@ -13,6 +18,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :railway_stations do
       patch :update_position, on: :member
+      patch :update_time, on: :member
     end
 
     resources :trains do

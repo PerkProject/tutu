@@ -1,5 +1,5 @@
 class Admin::TicketsController < Admin::BaseController
-  before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_action :set_ticket, only: %i(show edit update destroy)
 
   def index
     @tickets = Ticket.all
@@ -13,7 +13,7 @@ class Admin::TicketsController < Admin::BaseController
 
   def update
     if @ticket.update(ticket_params)
-      redirect_to admin_ticket_path(@ticket), notice: 'Ticket was successfully updated.'
+      redirect_to admin_ticket_path(@ticket), notice: "Ticket was successfully updated."
     else
       render :edit
     end
@@ -21,7 +21,7 @@ class Admin::TicketsController < Admin::BaseController
 
   def destroy
     @ticket.destroy
-    redirect_to admin_tickets_path, notice: 'Ticket was successfully deleted.'
+    redirect_to admin_tickets_path, notice: "Ticket was successfully deleted."
   end
 
   private
