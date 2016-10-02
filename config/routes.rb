@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resource :search, only: [:show, :create]
-  resources :tickets, only: [:show, :create] do
+  resources :tickets, only: [:show, :create, :destroy] do
     collection do
       get :index
       post :buy

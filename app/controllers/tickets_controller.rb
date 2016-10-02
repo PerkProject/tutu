@@ -31,7 +31,6 @@ class TicketsController < ApplicationController
     redirect_to tickets_path, notice: "Ticket was successfully deleted."
   end
 
-
   private
 
   def set_ticket
