@@ -1,4 +1,4 @@
-class Admin::RailwayStationsController < ApplicationController
+class Admin::RailwayStationsController < Admin::BaseController
   before_action :set_railway_station, only: %i(show edit update destroy update_position)
   before_action :set_route, only: %i(update_position update_time)
 

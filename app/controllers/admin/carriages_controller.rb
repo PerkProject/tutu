@@ -1,4 +1,4 @@
-class Admin::CarriagesController < ApplicationController
+class Admin::CarriagesController < Admin::BaseController
   before_action :set_carriage, only: %i(show edit update destroy)
   before_action :set_train, only: %i(new create index)
 
