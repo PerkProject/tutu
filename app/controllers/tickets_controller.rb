@@ -10,10 +10,9 @@ class TicketsController < ApplicationController
   end
 
   def buy
-    @ticket = Ticket.new(train_id:         params[:train_id],
-                         start_station_id: params[:start_station_id],
-                         end_station_id:   params[:end_station_id])
-    current_user.tickets << @ticket
+    @ticket = current_user.tickets.new(train_id:         params[:train_id],
+                                       start_station_id: params[:start_station_id],
+                                       end_station_id:   params[:end_station_id])
   end
 
   def create
@@ -35,7 +34,6 @@ class TicketsController < ApplicationController
 
   def set_ticket
     @ticket = current_user.tickets.find(params[:id])
-    redirect_to root_path, alert: "Доступ запрещён!" unless @ticket.user == current_user
   end
 
   def ticket_params
