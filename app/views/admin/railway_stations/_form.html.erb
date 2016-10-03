@@ -1,4 +1,4 @@
-<%= form_for(@railway_station) do |f| %>
+<%= form_for [:admin, railway_station] do |f| %>
   <%= render 'common/errors', resource: @railway_station %>
 
   <div class="field">

@@ -1,0 +1,19 @@
+ru:
+  hello: "Привет"
+  permission_denied: "Доступ запрещен!"
+
+  common:
+   user_status:
+    my_tickets: "Мои билеты"
+    admin: "Администрирование"
+    log_in: "Вход"
+    log_out: "Выход"
+  error_msg: "Следующие данные введены некорректно:"
+
+  admin:
+   welcome:
+  index:
+  stations: "Станции"
+  trains: "Поезда"
+  routes: "Маршруты"
+  tickets: "Билеты"
