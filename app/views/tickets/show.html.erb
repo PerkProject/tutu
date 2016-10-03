@@ -3,7 +3,7 @@
 <h1>Информация о заказе</h1>
 
 <p>Дата покупки: <%= @ticket.created_at.strftime '%d.%m.%Y %H:%M' %></p>
-
+<p>Билет купил: <%= @ticket.user.email %> </p>
 <table>
   <tbody>
   <tr>

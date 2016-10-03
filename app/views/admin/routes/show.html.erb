@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Название:</strong>
+  <%= @route.name %>
+</p>
+
+<p>
+  <strong>Список станций на маршруте:</strong>
+  <% if @route.railway_stations.present? %>
+    <ul>
+      <% @route.railway_stations.ordered.each do |station| %>
+          <li>
+            <%= link_to station.title, [:admin,station] %>
+          </li>
+      <% end %>
+    </ul>
+<% else %>
+    Станций на маршруте нет
+<% end %>
+</p>
+
+<p>
+  <strong>Список поездов на маршруте:</strong>
+  <% if @route.trains.present? %>
+    <ul>
+      <% @route.trains.each do |train| %>
+          <li>
+            <%= link_to train.number, [:admin, train]%>
+          </li>
+      <% end %>
+    </ul>
+<% else %>
+    <p>
+      <strong>Поездов на маршруте нет </strong>
+    </p>
+<% end %>
+</p>
+
+<%= link_to 'Редактировать', edit_admin_route_path(@route) %> |
+<%= link_to 'Назад', admin_routes_path %>

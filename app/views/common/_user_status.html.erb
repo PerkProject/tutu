@@ -1,0 +1,11 @@
+<% if user_signed_in? %>
+    <span><%= "Привет, #{current_user.full_name}!" %></span> |
+    <span><%= link_to 'My tickets', tickets_path %></span> |
+    <p>Account: <%= current_user.email %> </p>
+    <% if current_user.admin? %>
+        <span><%= link_to 'Админка', admin_welcome_index_path %></span> |
+    <% end %>
+    <%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
+<% else %>
+    <%= link_to 'Войти', new_user_session_path %>
+<% end %>

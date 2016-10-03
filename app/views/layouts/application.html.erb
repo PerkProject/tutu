@@ -7,6 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<p id="notice" class="notice"><%= notice %> </p>
+<p class="alert"><%= alert %>  </p>
+
+<%= render 'common/user_status'%>
 
 <%= yield %>
 

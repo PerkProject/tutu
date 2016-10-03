@@ -1,0 +1,22 @@
+<h1>Мои билеты</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Номер билета</th>
+    <th>Поезд</th>
+    <th>Маршрут</th>
+    <th>Станция отправления</th>
+    <th>Станция прибытия</th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <%= render @tickets %>
+  </tbody>
+</table>
+
+<br/>
+
+<%= link_to 'Back', search_path%>

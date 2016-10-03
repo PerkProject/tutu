@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Список маршрутов</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Название маршрута</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <%= render @routes %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Добавить маршрут', new_admin_route_path %>
+
+<br>
+<%= link_to 'Назад', 'welcome/index' %>

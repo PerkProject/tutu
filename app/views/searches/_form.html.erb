@@ -1,0 +1,16 @@
+<%= form_for(@search, method: :post, url: search_path) do |f| %>
+    <%= render 'common/errors', resource: @search %>
+    <div class="field">
+      <%= label_tag 'Станция отправки' %>
+      <%= f.collection_select :start_station_id, RailwayStation.ordered_by_title, :id, :title %>
+    </div>
+
+    <div class="field">
+      <%= label_tag 'Станция прибытия' %>
+      <%= f.collection_select :end_station_id, RailwayStation.ordered_by_title, :id, :title %>
+    </div>
+
+    <div class="actions">
+      <%= submit_tag 'Поиск' %>
+    </div>
+<% end %>

@@ -1,9 +1,9 @@
 class SearchesController < ApplicationController
-  def show
+  def new
     @search ||= Search.new
   end
 
-  def create
+  def show
     @search = Search.new(search_params)
     @search.search_run
     render :show

@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Номер:</strong>
+  <%= @carriage.number %>
+</p>
+
+<p>
+  <strong>Тип вагона:</strong>
+  <%= @carriage.type %>
+</p>
+
+<p>
+  <strong>Прицеплен к поезду:</strong>
+  <% if @carriage.train.present? %>
+      <%= link_to  @carriage.train.number, [:admin, @carriage.train] %>
+  <% else %>
+      Не указано
+  <% end %>
+</p>
+
+<p>
+  <H3>Количество мест:</H3>
+  <strong>Верхние места:</strong>
+  <%= @carriage.top_place != 0 ? @carriage.top_place : "Отсутствуют" %>
+  <br>
+  <strong>Нижние места:</strong>
+  <%= @carriage.lower_place != 0 ?  @carriage.lower_place : "Отсутствуют"  %>
+  <br>
+  <strong>Верхние боковые места:</strong>
+  <%= @carriage.side_top_places != 0 ?  @carriage.side_top_places : "Отсутствуют"  %>
+  <br>
+  <strong>Нижние боковые места:</strong>
+  <%= @carriage.side_lower_places != 0 ?  @carriage.side_lower_places : "Отсутствуют"  %>
+  <br>
+  <strong>Сидячие места:</strong>
+  <%= @carriage.seats != 0 ?  @carriage.seats : "Отсутствуют"  %>
+</p>
+
+<%= link_to 'Редактировать', admin_edit_carriage_path(@carriage)%> |
+<%= link_to 'Назад', [:admin, @carriage.train] %>

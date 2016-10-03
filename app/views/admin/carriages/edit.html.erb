@@ -1,0 +1,6 @@
+<h1>Редактировать вагон</h1>
+
+<%= render 'form', carriage: @carriage %>
+
+<%= link_to 'Показать', [:admin, @carriage.train] %> |
+<%= link_to 'Назад',  admin_train_carriages_path %>
