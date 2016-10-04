@@ -1,10 +1,11 @@
+<div class="page-header">
 <h1>Панель управления</h1>
-
-
-<%= link_to 'Список станций', admin_railway_stations_path %>
-<br>
-<%= link_to 'Список поездов', admin_trains_path %>
-<br>
-<%= link_to 'Список маршрутов', admin_routes_path %>
-<br>
-<%= link_to 'Список билетов', admin_tickets_path %>
+</div>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <ul class="nav navbar-nav">
+    <li><%= link_to t('stations'), admin_railway_stations_path %></li>
+    <li><%= link_to t('trains'), admin_trains_path %></li>
+    <li><%= link_to t('routes'), admin_routes_path %></li>
+    <li><%= link_to t('tickets'), admin_tickets_path %></li>
+  </ul>
+</div>

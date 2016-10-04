@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
-
+<div class="page-header">
 <h1>Список маршрутов</h1>
-
-<table>
+</div>
+<table class="table table-striped">
   <thead>
   <tr>
     <th>Название маршрута</th>
@@ -17,7 +17,7 @@
 
 <br>
 
-<%= link_to 'Добавить маршрут', new_admin_route_path %>
+<%= link_to 'Добавить маршрут', new_admin_route_path, class: "btn btn-primary"  %>
 
 <br>
-<%= link_to 'Назад', 'welcome/index' %>
+<%= link_to 'Назад', 'welcome/index', class: "btn btn-primary"  %>

@@ -1,13 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Список железнодорожных станций</h1>
+<div class="page-header">
+  <h1><%= t('.title') %> <small></small></h1>
+</div>
 
-<table>
+<table class="table table-striped">
   <thead>
-    <tr>
-      <th>Название</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th><%= t('.name') %></th>
+    <th colspan="3"></th>
+  </tr>
   </thead>
 
   <tbody>
@@ -17,7 +19,7 @@
 
 <br>
 
-<%= link_to 'Создать новую станцию', new_admin_railway_station_path %>
+<%= link_to t('.add'), new_admin_railway_station_path, class: 'btn btn-primary', role: 'button' %>
 
 <br>
-<%= link_to 'Назад', 'welcome/index' %>
+<%= link_to t('.back'), 'welcome/index', class: 'btn btn-primary', role: 'button' %>

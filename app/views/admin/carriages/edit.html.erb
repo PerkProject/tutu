@@ -1,6 +1,8 @@
-<h1>Редактировать вагон</h1>
+<div class="page-header">
+  <h1>Редактирование вагона <small></small></h1>
+</div>
 
 <%= render 'form', carriage: @carriage %>
 
-<%= link_to 'Показать', [:admin, @carriage.train] %> |
-<%= link_to 'Назад',  admin_train_carriages_path %>
+<%= link_to 'Показать', [:admin, @carriage.train], class: 'btn btn-primary' %>
+<%= link_to 'Назад',  admin_train_carriages_path, class: 'btn btn-primary' %>

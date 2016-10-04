@@ -1,11 +1,27 @@
-<% if user_signed_in? %>
-    <span><%= "Привет, #{current_user.full_name}!" %></span> |
-    <span><%= link_to 'My tickets', tickets_path %></span> |
-    <p>Account: <%= current_user.email %> </p>
-    <% if current_user.admin? %>
-        <span><%= link_to 'Админка', admin_welcome_index_path %></span> |
-    <% end %>
-    <%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
-<% else %>
-    <%= link_to 'Войти', new_user_session_path %>
-<% end %>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <%= link_to search_path, class: 'navbar-brand' do %>
+          Railway
+      <% end %>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+          <li><span class="navbar-text"><%= t('hello') %>, <%= current_user.full_name %>!</span></li>
+          <li>
+            <%= link_to t('.my_tickets'), tickets_path, class: 'nav-item nav-link' %>
+          </li>
+          <% if current_user.admin? %>
+              <li>
+                <%= link_to t('.admin'), admin_welcome_index_path, class: 'nav-item nav-link' %>
+              </li>
+          <% end %>
+          <li>
+            <%= link_to t('.log_out'), destroy_user_session_path, method: :delete, class: 'nav-item nav-link' %>
+          </li>
+      <% else %>
+          <li><%= link_to t('.log_in'), new_user_session_path, class: 'nav-item nav-link' %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,49 @@
+ru:
+  hello: "Привет"
+  permission_denied: "Доступ запрещен!"
+
+  common:
+   user_status:
+    my_tickets: "Мои билеты"
+    admin: "Администрирование"
+    log_in: "Вход"
+    log_out: "Выход"
+  error_msg: "Следующие данные введены некорректно:"
+
+
+  admin:
+   welcome:
+  index:
+  stations: "Станции"
+  trains: "Поезда"
+  routes: "Маршруты"
+  tickets: "Билеты"
+
+  admin:
+   railway_stations:
+     index:
+       title: "Станции"
+       back: "Назад"
+       add: "Добавить"
+       name: "Название"
+     form:
+       submit: "%{action} станцию"
+       label: "Название"
+     show:
+       title: "Станция"
+       edit: "Редактировать"
+       back: "Назад"
+       not_route: "Станция не входит ни в один маршрут"
+       in_route: "Станция входит в следующие маршруты:"
+       trains_on_station: "Поезда на станции:"
+     edit:
+       title: "Редактировать станцию"
+       show: "Показать"
+       back: "Назад"
+     railway_station:
+       show: "Показать"
+       edit: "Редактировать"
+       delete: "Удалить"
+       confirm: "Вы уверены?"
+     attributes:
+       title: "Название"
