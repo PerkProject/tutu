@@ -1,29 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Номер:</strong>
+<div class="page-header">
+  <h1>Номер:</h1>
   <%= @train.number %>
-</p>
-<p>
+</div>
+<div class="col-sm-2 pull-left">
   <strong>Находится на станции:</strong>
   <% if @train.current_station.present? %>
       <%= link_to  @train.current_station.title, [:admin, @train.current_station] %>
   <% else %>
       Не указано
   <% end %>
-</p>
+</div>
 
-<p>
+<div class="col-sm-2 pull-center">
 <strong>Следует по маршруту:</strong>
   <% if @train.route.present? %>
     <%=  link_to @train.route.name, [:admin, @train.route] %>
   <% else %>
     Не указано
   <%end%>
-</p>
+</div>
 
-<p>
-  <storng>Список вагонов поезда:</storng>
+<div class="col-sm-4 pull-center">
+  <h3>Список вагонов поезда:</h3>
   <br>
   <% if @train.ordered_carriage.present? %>
     <ul>
@@ -37,11 +37,11 @@
     Вагонов нет
   <%end%>
 <br>
-<%= link_to 'Добавить вагон', new_admin_train_carriage_path(@train) %>
-</p>
+<%= link_to 'Добавить вагон', new_admin_train_carriage_path(@train), class: 'btn btn-primary', role: 'button'  %>
+</div>
 
 
-<p>
+<div class="col-sm-4 pull-right">
   <strong>Информация о вагонах в составе поезда:</strong>
   <% if @train.carriages.present? %>
 <ul>
@@ -67,7 +67,7 @@
       <strong>информации нет </strong>
     </p>
 <% end %>
-</p>
+</div>
 
-<%= link_to 'Редактировать', edit_admin_train_path(@train) %> |
-<%= link_to 'Назад', admin_trains_path %>
+<%= link_to 'Редактировать', edit_admin_train_path(@train), class: 'btn btn-primary', role: 'button'  %> |
+<%= link_to 'Назад', admin_trains_path, class: 'btn btn-primary', role: 'button'  %>

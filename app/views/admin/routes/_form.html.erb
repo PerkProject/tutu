@@ -10,6 +10,6 @@
       <%= f.collection_select :railway_station_ids, RailwayStation.all, :id, :title, {}, { multiple: true } %>
     </div>
     <div class="actions">
-      <%= f.submit "#{ @route.new_record? ? 'Создать' : 'Изменить' }" %>
+      <%= f.submit "#{ @route.new_record? ? 'Создать' : 'Изменить' }" , class: 'btn btn-primary'%>
     </div>
 <% end %>

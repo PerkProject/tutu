@@ -1,14 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @railway_station.title %>
-</p>
+<div class="page-header">
+  <h1><%= t('.title') %>: <small><%= @railway_station.title %></small></h1>
+</div>
 
 <% if @railway_station.routes.empty? %>
-    <p>Станция не входит ни в один маршрут</p>
+    <strong> <%= t('.not_route') %></strong>
 <% else %>
-    <p>Станция входит в следующие маршруты:</p>
+    <strong><%= t('.in_route') %></strong>
     <ul>
       <% @railway_station.routes.each do |route| %>
           <li><%= link_to route.name, [:admin, route] %></li>
@@ -16,8 +15,8 @@
     </ul>
 <% end %>
 
-<p>
-  <strong>Поезда на станции:</strong>
+
+  <strong><%= t('.trains_on_station') %></strong>
   <% if @railway_station.trains.present? %>
     <ul>
       <% @railway_station.trains.each do |train| %>
@@ -29,7 +28,7 @@
 <% else %>
     Отсутствуют
 <% end %>
-</p>
 
-<%= link_to 'Редактировать', edit_admin_railway_station_path(@railway_station) %> |
-<%= link_to 'Назад', admin_railway_stations_path %>
+
+<%= link_to t('.edit'), edit_admin_railway_station_path(@railway_station), class: 'btn btn-primary' %> |
+<%= link_to t('.back'), admin_railway_stations_path , class: 'btn btn-primary' %>

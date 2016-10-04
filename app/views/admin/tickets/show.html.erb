@@ -1,9 +1,10 @@
+<div class="page-header">
 <h1>Информация о билете</h1>
-
+</div>
 <p>Дата покупки: <%= @ticket.created_at.strftime '%d.%m.%Y %H:%M' %></p>
 <p>Покупатель: <%= @ticket.user.full_name %></p>
 
-<table>
+<table class="table table-striped">
   <tbody>
   <tr>
     <th>Номер билета:</th>
@@ -48,4 +49,4 @@
   </tbody>
 </table>
 
-<%= link_to 'Назад', admin_tickets_path %>
+<%= link_to 'Назад', admin_tickets_path, class: "btn btn-primary" %>

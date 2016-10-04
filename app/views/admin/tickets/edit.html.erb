@@ -2,12 +2,12 @@
   <%= form_for [:admin, @ticket] do |f| %>
       <div class="field">
         <%= f.label :start_station_id %>
-        <%= f.collection_select :start_station_id, @ticket.train.route.railway_stations, :id, :title %>
+        <%= f.collection_select :start_station_id, @ticket.train.route.railway_stations, :id, :title, class: 'form-control' %>
       </div>
 
       <div class="field">
         <%= f.label :end_station_id %>
-        <%= f.collection_select :end_station_id, @ticket.train.route.railway_stations, :id, :title %>
+        <%= f.collection_select :end_station_id, @ticket.train.route.railway_stations, :id, :title, class: 'form-control' %>
       </div>
 
       <div class="field">
@@ -24,3 +24,4 @@
         <%= f.submit %>
       </div>
   <% end %>
+ <%= link_to 'Назад', admin_tickets_path, class: "btn btn-primary" %>

@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
-
+<div class="page-header">
 <h1>Информация о заказе</h1>
-
+</div>
 <p>Дата покупки: <%= @ticket.created_at.strftime '%d.%m.%Y %H:%M' %></p>
 <p>Билет купил: <%= @ticket.user.email %> </p>
-<table>
+<table class="table table-striped">
   <tbody>
   <tr>
     <th>Номер билета:</th>
@@ -35,4 +35,4 @@
   </tbody>
 </table>
 
-<%= link_to 'Назад', search_path %>
+<%= link_to 'Назад', search_path, class: "btn btn-primary" %>

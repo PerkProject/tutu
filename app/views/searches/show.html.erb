@@ -1,7 +1,7 @@
  <% if @search.result.empty? %>
      <p>Search result is empty</p>
  <% else %>
-            <table>
+            <table class="table table-striped">
               <thead>
               <tr>
                 <th>Поезд</th>
@@ -30,4 +30,4 @@
         <% end %>
  <% end %>
 
- <%= link_to 'К поиску', search_url %>
+ <%= link_to 'К поиску', search_url, class: "btn btn-primary" %>

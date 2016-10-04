@@ -1,11 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Название:</strong>
+<div class="page-header">
   <%= @route.name %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>Список станций на маршруте:</strong>
   <% if @route.railway_stations.present? %>
     <ul>
@@ -18,9 +17,9 @@
 <% else %>
     Станций на маршруте нет
 <% end %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>Список поездов на маршруте:</strong>
   <% if @route.trains.present? %>
     <ul>
@@ -35,7 +34,7 @@
       <strong>Поездов на маршруте нет </strong>
     </p>
 <% end %>
-</p>
+</div>
 
-<%= link_to 'Редактировать', edit_admin_route_path(@route) %> |
-<%= link_to 'Назад', admin_routes_path %>
+<%= link_to 'Редактировать', edit_admin_route_path(@route), class: "btn btn-primary" %> |
+<%= link_to 'Назад', admin_routes_path, class: "btn btn-primary" %>
