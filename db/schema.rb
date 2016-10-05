@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161002155239) do
+ActiveRecord::Schema.define(version: 20161005224719) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "carriages", force: :cascade do |t|
     t.integer  "number"
@@ -26,7 +29,8 @@ ActiveRecord::Schema.define(version: 20161002155239) do
     t.integer  "train_id"
   end
 
-  add_index "carriages", ["train_id"], name: "index_carriages_on_train_id"
+  add_index "carriages", ["id", "type"], name: "index_carriages_on_id_and_type", using: :btree
+  add_index "carriages", ["train_id"], name: "index_carriages_on_train_id", using: :btree
 
   create_table "railway_stations", force: :cascade do |t|
     t.string   "title"
@@ -35,15 +39,18 @@ ActiveRecord::Schema.define(version: 20161002155239) do
   end
 
   create_table "railway_stations_routes", force: :cascade do |t|
-    t.integer "position",           default: 0
     t.integer "railway_station_id"
     t.integer "route_id"
+    t.integer "position",              default: 0
+    t.integer "railway_station_id_id"
+    t.integer "route_id_id"
     t.string  "arrival_time"
     t.string  "departure_time"
   end
 
-  add_index "railway_stations_routes", ["railway_station_id"], name: "index_railway_stations_routes_on_railway_station_id"
-  add_index "railway_stations_routes", ["route_id"], name: "index_railway_stations_routes_on_route_id"
+  add_index "railway_stations_routes", ["railway_station_id", "route_id"], name: "route_rsr", unique: true, using: :btree
+  add_index "railway_stations_routes", ["railway_station_id_id"], name: "index_railway_stations_routes_on_railway_station_id_id", using: :btree
+  add_index "railway_stations_routes", ["route_id_id"], name: "index_railway_stations_routes_on_route_id_id", using: :btree
 
   create_table "routes", force: :cascade do |t|
     t.string   "name"
@@ -63,10 +70,10 @@ ActiveRecord::Schema.define(version: 20161002155239) do
     t.integer  "train_id"
   end
 
-  add_index "tickets", ["end_station_id"], name: "index_tickets_on_end_station_id"
-  add_index "tickets", ["start_station_id"], name: "index_tickets_on_start_station_id"
-  add_index "tickets", ["train_id"], name: "index_tickets_on_train_id"
-  add_index "tickets", ["user_id"], name: "index_tickets_on_user_id"
+  add_index "tickets", ["end_station_id"], name: "index_tickets_on_end_station_id", using: :btree
+  add_index "tickets", ["start_station_id"], name: "index_tickets_on_start_station_id", using: :btree
+  add_index "tickets", ["train_id"], name: "index_tickets_on_train_id", using: :btree
+  add_index "tickets", ["user_id"], name: "index_tickets_on_user_id", using: :btree
 
   create_table "trains", force: :cascade do |t|
     t.string   "number"
@@ -77,7 +84,8 @@ ActiveRecord::Schema.define(version: 20161002155239) do
     t.boolean  "head_sort_order",    default: true
   end
 
-  add_index "trains", ["current_station_id"], name: "index_trains_on_current_station_id"
+  add_index "trains", ["current_station_id"], name: "index_trains_on_current_station_id", using: :btree
+  add_index "trains", ["route_id"], name: "index_trains_on_route_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                             null: false
@@ -96,8 +104,11 @@ ActiveRecord::Schema.define(version: 20161002155239) do
     t.string   "last_name"
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "carriages", "trains"
+  add_foreign_key "tickets", "trains"
+  add_foreign_key "tickets", "users"
 end
