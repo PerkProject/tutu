@@ -37,5 +37,5 @@
   <%= @carriage.seats != 0 ?  @carriage.seats : "Отсутствуют"  %>
 </p>
 
-<%= link_to 'Редактировать', admin_edit_carriage_path(@carriage)%> |
+<%= link_to 'Редактировать', edit_admin_carriage_path(@carriage)%> |
 <%= link_to 'Назад', [:admin, @carriage.train] %>

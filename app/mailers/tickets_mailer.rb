@@ -6,7 +6,7 @@ class TicketsMailer < ApplicationMailer
   end
 
   def cancel_ticket(ticket)
-    @serial_number = ticket.serial_number
+    @serial_number = ticket.number
     @user = ticket.user
     mail(to: @user.email, subject: "Вы удалили билет")
   end
