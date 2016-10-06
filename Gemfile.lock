@@ -61,6 +61,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.7.0)
+    faraday (0.9.2)
+      multipart-post (>= 1.2, < 3)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -91,9 +93,11 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mimemagic (0.3.2)
     mini_portile2 (2.1.0)
     minitest (5.9.1)
     multi_json (1.12.1)
+    multipart-post (2.0.0)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
@@ -148,9 +152,14 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    sendgrid-rails (3.1.0)
-      actionmailer (>= 3.0.0)
-      activesupport (>= 2.1.0)
+    sendgrid-actionmailer (0.2.1)
+      mail (~> 2.5)
+      sendgrid-ruby (< 2.0)
+    sendgrid-ruby (1.1.6)
+      faraday (~> 0.9)
+      mimemagic
+      smtpapi (~> 0.1)
+    smtpapi (0.1.0)
     spring (1.7.2)
     sprockets (3.7.0)
       concurrent-ruby (~> 1.0)
@@ -200,7 +209,7 @@ DEPENDENCIES
   rails_12factor
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  sendgrid-rails (>= 2.0.5)
+  sendgrid-actionmailer
   spring
   therubyracer
   turbolinks
