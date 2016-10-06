@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root 'searches#show'
+  root 'searches#new'
 
   resource :search do
     get '/' => 'searches#new'

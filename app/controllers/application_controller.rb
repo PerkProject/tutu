@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(current_user)
-    current_user.admin? ? admin_welcome_index_path : new_search_path
+    current_user.admin? ? admin_welcome_index_path : root_path
   end
 
   def configure_permitted_parameters
