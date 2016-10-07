@@ -152,6 +152,8 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    sendgrid (1.2.4)
+      json
     sendgrid-actionmailer (0.2.1)
       mail (~> 2.5)
       sendgrid-ruby (< 2.0)
@@ -209,6 +211,7 @@ DEPENDENCIES
   rails_12factor
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  sendgrid
   sendgrid-actionmailer
   spring
   therubyracer
