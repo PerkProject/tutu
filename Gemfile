@@ -29,8 +29,7 @@ gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
 
 gem 'rails_12factor'
-gem 'sendgrid-rails'
-gem 'sendgrid-actionmailer', '~> 0.0.5'
+gem 'postmark-rails', '>= 0.10.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
