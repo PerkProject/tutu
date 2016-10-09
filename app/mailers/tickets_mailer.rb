@@ -1,10 +1,13 @@
 class TicketsMailer < ApplicationMailer
-  default from: "vk@thinknetica.com"
-  layout "mailer"
-  def buy_ticket(user, ticket)
-    @user = user
+  def buy_ticket(ticket)
     @ticket = ticket
+    @user = ticket.user
+    mail(to: @user.email, subject: "Вы купили билет")
+  end
 
-    mail(to: user.email, subject: "Вы купили билет")
+  def cancel_ticket(ticket)
+    @serial_number = ticket.number
+    @user = ticket.user
+    mail(to: @user.email, subject: "Вы удалили билет")
   end
 end

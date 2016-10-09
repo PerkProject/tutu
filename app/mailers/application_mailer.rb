@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "vk@thinknetica.com"
+  default from: "perk@manzanagroup.ru"
   layout "mailer"
 end

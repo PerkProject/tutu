@@ -7,7 +7,8 @@ class Ticket < ActiveRecord::Base
   validates :number, :passenger_name, :passport_number, presence: true
   before_validation :set_number, on: :create
 
-  # after_create :send_notification
+  after_create :send_buy_notification
+  after_destroy :send_cancel_notification
 
   private
 
@@ -15,7 +16,11 @@ class Ticket < ActiveRecord::Base
     self.number = ["a".."z", "A".."Z", "0".."9"].map(&:to_a).flatten.sample(8).join
   end
 
-  # def send_notification
-  #   TicketsMailer.buy_ticket(user, self).deliver_now
-  # end
+  def send_buy_notification
+    TicketsMailer.buy_ticket(self).deliver_now
+  end
+
+  def send_cancel_notification
+    TicketsMailer.cancel_ticket(self).deliver_now
+  end
 end
