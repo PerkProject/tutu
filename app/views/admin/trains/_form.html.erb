@@ -1,7 +1,9 @@
+<%= render 'common/errors', resource: train %>
 <div class="row">
-  <div class="col-md-2">
-<%= form_for [:admin, @train] do |f| %>
-  <%= render 'common/errors', resource: @train %>
+  <div class="col-md-4">
+    <% hidden = false unless local_assigns[:hidden] %>
+<%= form_for [:admin, train], html: { style: "display: #{hidden ? 'none' : 'block'}" }  do |f| %>
+
 
   <div class="field">
     <%= f.label :number %><br>
@@ -20,7 +22,7 @@
       <%= f.check_box :head_sort_order %>
     </div>
   <div class="actions">
-    <%= f.submit "#{ @train.new_record? ? 'Создать' : 'Изменить' }", class: 'btn btn-primary' %>
+    <%= f.submit "#{ train.new_record? ? 'Создать' : 'Изменить' }", class: 'btn btn-primary' %>
   </div>
 <% end %>
   </div>

@@ -1,44 +1,64 @@
-<div>
-<%= form_for [@train, @carriage.becomes(Carriage)] , url:admin_train_carriages_path   do |f| %>
-
-
 
 <%= render 'common/errors', resource: @carriage %>
-
+<div class="row">
+  <div class="col-md-4">
+<%= form_for [@train, @carriage.becomes(Carriage)] , url:admin_train_carriages_path   do |f| %>
     <div class="field">
       <%= f.label :carriage_type %>
-      <%= f.select :type, Carriage.types.map {|r| [r.to_s.humanize, r.to_s.camelcase]}, {} %>
+      <%= f.select :type , Carriage.types.map {|r| [r.to_s.humanize, r.to_s.camelcase]}, { }, class: "form-control"%>
     </div>
+ </div>
+</div>
 
-
-
+        <div class="row">
+<div class="col-md-4 coupe eco" style="display: block" >
     <div class="field">
       <%= f.label :top_place %>
       <%= f.number_field :top_place %>
     </div>
+</div>
+          </div>
+
+        <div class="row">
+        <div class="col-md-4 coupe sv eco" style="display: block" >
     <div class="field">
       <%= f.label :lower_place %>
       <%= f.number_field :lower_place %>
     </div>
+          </div>
+          </div>
 
+        <div class="row">
+        <div class="col-md-4 eco" style="display: none" >
     <div class="field">
       <%= f.label :side_top_places %>
       <%= f.number_field :side_top_places %>
     </div>
+          </div>
+          </div>
+
+        <div class="row">
+        <div class="col-md-4 eco" style="display: none" >
     <div class="field">
       <%= f.label :side_lower_places %>
       <%= f.number_field :side_lower_places %>
     </div>
+          </div>
+          </div>
 
+        <div class="row">
+        <div class="col-md-4 sd" style="display: none" >
     <div class="field">
       <%= f.label :seats %>
       <%= f.number_field :seats %>
     </div>
+          </div>
+          </div>
 
 
 
     <div class="actions">
-      <%= f.submit "#{ @carriage.new_record? ? 'Создать' : 'Изменить' }" %>
+      <%= f.submit "#{ @carriage.new_record? ? 'Создать' : 'Изменить' }", class: "btn btn-success" %>
     </div>
 
    <% end %>

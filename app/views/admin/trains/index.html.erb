@@ -12,7 +12,9 @@
   </thead>
 
   <tbody>
-  <%= render @trains %>
+  <% @trains.each do |train| %>
+      <%= render train %>
+  <% end %>
   </tbody>
 </table>
 

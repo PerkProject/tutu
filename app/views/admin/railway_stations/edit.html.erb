@@ -2,7 +2,7 @@
   <h1><%= t('.title') %> <small></small></h1>
 </div>
 
-<%= render 'form' %>
+<%= render 'form', station: @railway_station %>
 
 <%= link_to t('.show'), [:admin, @railway_station], class: 'btn btn-primary' %> |
 <%= link_to t('.back'), admin_railway_stations_path, class: 'btn btn-primary' %>

@@ -1,13 +1,15 @@
+<%= render 'common/errors', resource: station %>
 <div class="row">
   <div class="col-md-4">
-<%= form_for [:admin, @railway_station] do |f| %>
-  <%= render 'common/errors', resource: @railway_station %>
+    <% hidden = false unless local_assigns[:hidden] %>
+<%= form_for [:admin, station], html: { style: "display: #{hidden ? 'none' : 'block'}" } do |f| %>
+
   <div class="field">
     <%= f.label t('.label') %><br>
     <%= f.text_field :title , class: 'form-control'%>
   </div>
   <div class="actions">
-    <%= f.submit t('.submit', action: @railway_station.new_record? ? 'Создать' : 'Изменить'), class: 'btn btn-primary' %>
+    <%= f.submit t('.submit', action: station.new_record? ? 'Создать' : 'Изменить'), class: 'btn btn-primary' %>
   </div>
 <% end %>
   </div>
