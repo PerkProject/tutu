@@ -1,6 +1,11 @@
 <tr>
-  <td><%= railway_station.title %></td>
-  <td><%= link_to t('.show'), [:admin, railway_station] %></td>
-  <td><%= link_to t('.edit'), edit_admin_railway_station_path(railway_station) %></td>
-  <td><%= link_to t('.delete'), [:admin, railway_station], method: :delete, data: { confirm: t('.confirm') } %></td>
+  <td width="600px">
+    <div id="railway_station_title_<%= railway_station.id %>">
+      <h4><%= railway_station.title %></h4>
+    </div>
+    <%= render 'form', station: railway_station, hidden: true %>
+  </td>
+  <td><%= link_to t('.show'), [:admin, railway_station],  class: "btn btn-info" %></td>
+  <td><%= link_to t('.edit'), '', class: "btn btn-warning edit_station", data: { station_id: railway_station.id} %></td>
+  <td><%= link_to t('.delete'), [:admin, railway_station], class: "btn btn-danger", method: :delete, data: { confirm: t('.confirm') } %></td>
 </tr>

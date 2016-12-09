@@ -1,6 +1,11 @@
 <tr>
-  <td><%= train.number %></td>
-  <td><%= link_to 'Показать', [:admin, train] %></td>
-  <td><%= link_to 'Редактировать', edit_admin_train_path(train) %></td>
-  <td><%= link_to 'Удалить', [:admin, train], method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+  <td width="600px">
+    <div id="train_number_<%= train.id %>">
+      <h4><%= train.number %></h4>
+    </div>
+    <%= render 'form', train: train, hidden: true %>
+  </td>
+  <td><%= link_to 'Показать', [:admin, train], class: "btn btn-info" %></td>
+  <td><%= link_to 'Редактировать', '', class: "btn btn-warning edit_train", data: { train_id: train.id} %></td>
+  <td><%= link_to 'Удалить', [:admin, train], class: "btn btn-danger",  method: :delete, data: { confirm: 'Вы уверены?' } %></td>
 </tr>

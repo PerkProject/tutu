@@ -37,8 +37,8 @@ ru:
         email: "Email"
       carriage:
         type: "Тип"
-        top_places: "Верхние места"
-        lower_places: "Нижние места"
+        top_place: "Верхние места"
+        lower_place: "Нижние места"
         side_top_places: "Верхние боковые места"
         side_lower_places: "Нижние боковые места"
         seats: "Сидячие места"
